@@ -19,10 +19,6 @@ insert into employee_payroll values
 select * from employee_payroll;
 
 --UC4
-<<<<<<< HEAD
-select Salary from employee_payroll where Fname='Bill';
-=======
 select Salary from employee_payroll where Fname='Bill';
 --UC5
 select * from employee_payroll where startd between '2018-01-01' and GETDATE();
->>>>>>> UC5_RetrieveSpecificData
