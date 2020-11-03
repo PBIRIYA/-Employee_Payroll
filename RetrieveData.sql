@@ -17,3 +17,8 @@ insert into employee_payroll values
 ('Terissa',200000.00,'2019-11-13'),
 ('Charlie',300000.00,'2020-05-21');
 select * from employee_payroll;
+
+--UC4
+select Salary from employee_payroll where Fname='Bill';
+--UC5
+select * from employee_payroll where startd between '2018-01-01' and GETDATE();
