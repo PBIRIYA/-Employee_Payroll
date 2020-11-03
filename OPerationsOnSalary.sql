@@ -53,3 +53,4 @@ select MAX(salary), Gender from employee_payroll
 group by Gender;
 select COUNT(Gender), Gender from employee_payroll
 group by Gender;
+
