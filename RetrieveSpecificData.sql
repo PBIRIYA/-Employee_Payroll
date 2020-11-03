@@ -20,5 +20,6 @@ select * from employee_payroll;
 
 --UC4
 select Salary from employee_payroll where Fname='Bill';
+
 --UC5
 select * from employee_payroll where startd between '2018-01-01' and GETDATE();
