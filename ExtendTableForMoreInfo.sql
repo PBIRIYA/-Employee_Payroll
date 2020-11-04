@@ -20,13 +20,6 @@ select * from employee_payroll;
 select salary from employee_payroll where Fname = 'Bill';
 select * from employee_payroll where startd between '2018-01-01' and GETDATE();
 
-Alter table employee_payroll
-Add Gender char;
-select * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = 'employee_payroll';
-update employee_payroll set Gender = 'M' where Fname = 'Bill' or Fname = 'Charlie';
-update employee_payroll set Gender = 'F' where Fname = 'Terissa';
-select * from employee_payroll;
-
 --UC4
 select salary from employee_payroll where Fname = 'Bill';
 
@@ -55,12 +48,16 @@ select COUNT(Gender), Gender from employee_payroll
 group by Gender;
 
 --UC8
-alter table employee_payroll add phone varchar(15);
-alter table employee_payroll add department varchar(50);
-alter table employee_payroll add address varchar(50);
-alter table employee_payroll add constraint df_address default 'India' for address;
 select * from employee_payroll;
-insert into employee_payroll (Fname, salary, startd) values
+ALTER TABLE EMPLOYEE_PAYROLL ADD PHONE_NUMBER VARCHAR(25);
+ALTER TABLE EMPLOYEE_PAYROLL ADD DEPARTMENT VARCHAR(25)
+SELECT * FROM employee_payroll
+ALTER TABLE EMPLOYEE_PAYROLL ADD ADDRESS VARCHAR(150)NOT NULL DEFAULT 'INDIA';
+ALTER TABLE EMPLOYEE_PAYROLL ADD CONSTRAINT DF_ADDRESS DEFAULT 'INDIA' FOR ADDRESS
+SELECT * FROM EMPLOYEE_PAYROLL;
+ INSERT into employee_payroll (Fname, salary, startd) values
 ('Billi',20000.00,'2018-04-07');
-insert into employee_payroll(Fname, salary, Gender, startd) values
+INSERT into employee_payroll (Fname, salary, startd) values
+('Billi',20000.00,'2018-04-07');
+insert into employee_payroll(Fname, salary, gender, startd) values
 ('Mohan',250000.00,'M','2019-10-10');
