@@ -113,19 +113,76 @@ Income_tax money,
 Net_pay money not null
 );
 
---UC11_insert data in tables
-insert into employee values
-('Bill', 'M', '9424787443', 'Shanti Nagar'),
-('Terissa', 'F', '8109322276', 'Damoh Naka'),
-('Charlie', 'M', '9926707344', 'Panchsheel Nagar');
+--StoredProcedure
+create procedure SpAddEmployeeDetails
+(
+@EmployeeName varchar(255),
+@PhoneNumber varchar(255),
+@Address varchar(255),
+@Department varchar(255),
+@Gender char(1),
+@BasicPay float,
+@Deductions float,
+@TaxablePay float,
+@Tax float,
+@NetPay float,
+@StartDate Date
+)
+as
+begin
+insert into employee_payroll values
+(
+@EmployeeName,@BasicPay,@StartDate,@Gender,@PhoneNumber,@Address,@Department,@Deductions,@TaxablePay,@Tax,@NetPay
+)
+end
 
-insert into EmployeeDepartment values
-(101, 'Sales',1),
-(102, 'Sales',2),
-(103, 'HR', 3),
-(104,'Marketting',2);
+--EmployeeManagementStoredProcedure
+CREATE OR ALTER procedure [dbo].[spUpdateEmployeeSalary]
+@id int,
+@month varchar(20),
+@salary int,
+@EmpId int
+as
+BEGIN
+--below line will cause transaction uncommitable if constraint violation occur
+set XACT_ABORT on;
+begin try
+begin TRANSACTION;
+update SALARY
+set EMPSAL=@salary
+where SALARYId=@id and SAL_MONTH=@month and EmpId=@EmpId;
+select e.EmpId,e.ENAME,e.JOB,s.EMPSAL,s.SAL_MONTH,s.SALARYId
+from Employee e inner join SALARY s
+ON e.EmpId=s.EmpId where s.SALARYId=@id;
+COMMIT TRANSACTION;
+END TRY
+BEGIN CATCH
+select ERROR_NUMBER() AS ErrorNumber, ERROR_MESSAGE() AS ErrorMessage;
+IF(XACT_STATE())=-1
+BEGIN
+  PRINT N'The transaction is in an uncommitable state.'+'Rolling back transaction.'
+  ROLLBACK TRANSACTION;
+  END;
 
-insert into Payroll values
-(1,'2018-01-03', 100000, 10000, 90000, 1000, 89000),
-(2, '2019-11-13', 200000, 10000, 190000,3000,187000),
-(3, '2020-05-21', 300000, 20000, 280000, 5000, 275000);
+  IF(XACT_STATE())=1
+  BEGIN
+    PRINT N'The transaction is committable. '+'Committing transaction.'
+       COMMIT TRANSACTION;
+	END;
+	END CATCH
+END
+CREATE TABLE EMPLOYEE
+(
+EmpId int not null primary key,
+EName Varchar(255) not null,
+job varchar (255) not null
+);
+CREATE TABLE SALARY
+(
+SalaryId int not null primary key,
+Sal_Month varchar(20) not null,
+EmpSal int not null,
+EmpId int not null foreign key references Employee(EmpId)
+);
+
+
