@@ -52,6 +52,12 @@ namespace EmployeePayrollService
                 System.Console.WriteLine(e.Message);
             }
         }
+
+        internal EmployeeModel RetrieveDataByName(string employeeName)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool AddEmployee(EmployeeModel model)
         {
             SqlConnection connection = new SqlConnection(connectionString);
@@ -92,6 +98,12 @@ namespace EmployeePayrollService
             }
             return false;
         }
+
+        internal void RetrieveEmployeesWithParticularDateRange(DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool UpdateSalary(string name, decimal salary)
         {
             SqlConnection connection = new SqlConnection(connectionString);

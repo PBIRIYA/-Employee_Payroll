@@ -40,11 +40,27 @@ namespace EmployeePayrollService
                             Console.WriteLine("Records added successfully");
                         break;
                     case 3:
+                        Console.WriteLine("Enter Name");
                         string name = Console.ReadLine();
+                        Console.WriteLine("Enter Basic Pay");
                         decimal salary = Convert.ToDecimal(Console.ReadLine());
                         repo.UpdateSalary(name, salary);
                         break;
                     case 4:
+                        Console.WriteLine("Enter Name");
+                        string employeeName = Console.ReadLine();
+                        EmployeeModel employeeInfo = repo.RetrieveDataByName(employeeName);
+                        System.Console.WriteLine(employeeInfo.EmployeeName + " " + employeeInfo.BasicPay + " " + employeeInfo.StartDate + " " + employeeInfo.Gender + " " + employeeInfo.PhoneNumber + " " + employeeInfo.Address + " " + employeeInfo.Department + " " + employeeInfo.Deductions + " " + employeeInfo.TaxablePay + " " + employeeInfo.Tax + " " + employeeInfo.NetPay);
+                        System.Console.WriteLine("\n");
+                        break;
+                    case 5:
+                        Console.WriteLine("Enter Start date");
+                        DateTime startDate = Convert.ToDateTime(Console.ReadLine());
+                        Console.WriteLine("Enter End date");
+                        DateTime endDate = Convert.ToDateTime(Console.ReadLine());
+                        repo.RetrieveEmployeesWithParticularDateRange(startDate, endDate);
+                        break;
+                    case 6:
                         loop = 0;
                         break;
                 }
