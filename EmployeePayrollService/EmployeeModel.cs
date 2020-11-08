@@ -18,7 +18,5 @@ namespace EmployeePayrollService
         public double Tax { get; set; }
         public double NetPay { get; set; }
         public DateTime StartDate { get; set; }
-        public string City { get; set; }
-        public double Country { get; set; }
     }
 }
