@@ -61,6 +61,21 @@ namespace EmployeePayrollService
                         repo.RetrieveEmployeesWithParticularDateRange(startDate, endDate);
                         break;
                     case 6:
+                        repo.SumOfSalaryGenderWise();
+                        break;
+                    case 7:
+                        repo.AverageOfSalaryGenderWise();
+                        break;
+                    case 8:
+                        repo.MinimumSalaryGenderWise();
+                        break;
+                    case 9:
+                        repo.MaximumSalaryGenderWise();
+                        break;
+                    case 10:
+                        repo.CountOfEmployeesGenderWise();
+                        break;
+                    case 11:
                         loop = 0;
                         break;
                 }
