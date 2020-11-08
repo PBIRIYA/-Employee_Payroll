@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EmployeePayrollService
 {
-    class EmployeeRepo
+    public class EmployeeRepo
     {
         public static string connectionString = "Data Source=(LocalDb)\\LocalDBDemo;Initial Catalog=master;Integrated Security=True";
         SqlConnection connection = new SqlConnection(connectionString);
