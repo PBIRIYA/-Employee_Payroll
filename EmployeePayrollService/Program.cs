@@ -91,6 +91,13 @@ namespace EmployeePayrollService
                         repo.CountOfEmployeesGenderWise();
                         break;
                     case 11:
+                        Console.WriteLine("Enter employee Id of employee to be removed");
+                        int empId = Convert.ToInt32(Console.ReadLine());
+                        bool employeeRemoved = repo.RemoveEmployee(empId);
+                        if (employeeRemoved)
+                            Console.WriteLine("Employee Removed successfully");
+                        break;
+                    case 12:
                         loop = 0;
                         break;
                 }
