@@ -198,10 +198,10 @@ namespace EmployeePayrollService
                             employeeModel.PhoneNumber = !dr.IsDBNull(5) ? dr.GetString(5) : "NA";
                             employeeModel.Address = !dr.IsDBNull(6) ? dr.GetString(6) : "NA";
                             employeeModel.Department = !dr.IsDBNull(7) ? dr.GetString(7) : "NA";
-                            employeeModel.Deductions = !dr.IsDBNull(8) ? dr.GetDecimal(8) : 0;
-                            employeeModel.TaxablePay = !dr.IsDBNull(9) ? dr.GetDecimal(9) : 0;
-                            employeeModel.Tax = !dr.IsDBNull(10) ? dr.GetDecimal(10) : 0;
-                            employeeModel.NetPay = !dr.IsDBNull(11) ? dr.GetDecimal(11) : 0;
+                            //employeeModel.Deductions = !dr.IsDBNull(8) ? dr.GetDecimal(8) : 0;
+                            //employeeModel.TaxablePay = !dr.IsDBNull(9) ? dr.GetDecimal(9) : 0;
+                            //employeeModel.Tax = !dr.IsDBNull(10) ? dr.GetDecimal(10) : 0;
+                            //employeeModel.NetPay = !dr.IsDBNull(11) ? dr.GetDecimal(11) : 0;
                             employeeList.Add(employeeModel);
                         }
                     }
