@@ -472,5 +472,19 @@ namespace EmployeePayrollService
             }
             return false;
         }
+        public int AddMultipleEmployees(List<EmployeeModel> list)
+        {
+            int noOfEmployeesAdded = 0;
+            foreach (EmployeeModel employee in list)
+            {
+                noOfEmployeesAdded++;
+                AddEmployeeToDtabase(employee);
+            }
+            return noOfEmployeesAdded;
+        }
+        private void AddEmployeeToDtabase(EmployeeModel employee)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
