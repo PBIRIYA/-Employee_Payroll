@@ -198,3 +198,8 @@ end
 select * from employee
 select * from Payroll
 select * from EmployeeDepartment
+
+--Uc25
+--Adding is_active column in employee
+ALTER TABLE employee
+ADD is_active bit default 1;
